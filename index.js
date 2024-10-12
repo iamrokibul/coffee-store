@@ -6,7 +6,9 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // middleware
-app.use(cors());
+app.use(cors({
+  origin: 'https://coffee-store-fd40b.web.app'
+}));
 app.use(express.json());
 
 
@@ -33,7 +35,7 @@ const userCollection = client.db("userDB").collection("users");
 async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
-    await client.connect();
+    client.connect();
 
     // All about coffee store users......................................
 
